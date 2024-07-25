@@ -7,7 +7,7 @@ import corsOptions from "./cors.config";
 import appRoute from "../routes/app.route";
 import authRoute from "../routes/auth.route";
 import userRoute from "../routes/user.route";
-//import currencyRoute from "../routes/currency.route";
+import currencyRoute from "../routes/currency.route";
 
 const app: express.Application = express();
 
@@ -21,6 +21,6 @@ app.use(cors(corsOptions));
 app.use(appRoute);
 app.use(authRoute);
 app.use(userRoute);
-//app.use(currencyRoute);
+app.use(currencyRoute);
 
 export { app };

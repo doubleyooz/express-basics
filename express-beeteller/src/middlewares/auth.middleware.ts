@@ -25,12 +25,12 @@ export const auth = () => {
     }
 
     try {
-      const userExists = await User.exists({
+      const doesUserExists = await User.exists({
         _id: payload._id,
         tokenVersion: payload.tokenVersion,
       });
-
-      if (!userExists) {
+      console.log({ doesUserExists });
+      if (!doesUserExists) {
         return res.status(401).json({
           message: getMessage("default.unauthorized"),
         });

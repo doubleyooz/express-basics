@@ -22,4 +22,17 @@ export const rules = {
     .test("isValidMongoId", getMessage("invalid.object.id")!, (value) =>
       isValidMongoIdRequired(value!)
     ),
+  currency: yup
+    .string()
+    .matches(
+      /^EUR-BRL$|^BTC-BRL$|^USD-BRL$|^BRL-USD$|^EUR-USD$|^BTC-EUR$|^BTC-USD$/
+    ),
+  days: yup
+    .number()
+    .moreThan(0)
+    .test(
+      "Valid days",
+      "${path} must be divisible for 30",
+      (value) => value! % 30 === 0
+    ),
 };
