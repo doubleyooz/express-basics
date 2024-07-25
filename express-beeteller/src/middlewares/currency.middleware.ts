@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { getMessage } from "../utils/message.util";
 import { rules } from "../utils/rules";
 
-async function latelyPrice(req: Request, res: Response, next: NextFunction) {
+async function latestPrice(req: Request, res: Response, next: NextFunction) {
   try {
     await yup
       .object()
@@ -55,4 +55,4 @@ async function getCurrency(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export default { getCurrency, currentPrice, latelyPrice };
+export default { getCurrency, currentPrice, latestPrice };

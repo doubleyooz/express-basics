@@ -1,19 +1,11 @@
 import { Request, Response } from "express";
 import axios from "axios";
 import { getMessage } from "../utils/message.util";
-import { date } from "yup";
+import { BRL, BTC, EUR, url, url2, url3, USD } from "../utils/currencies.util";
 
 // "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL";
-const url = "https://economia.awesomeapi.com.br/json/";
-const url2 = "https://api.kraken.com/0/public/Ticker?pair=XBTeur";
-const url3 = "https://api.kraken.com/0/public/Ticker?pair=XBTusd";
 
-const BTC = "BTC";
-const BRL = "BRL";
-const EUR = "EUR";
-const USD = "USD";
-
-async function latelyPrice(req: Request, res: Response) {
+async function latestPrice(req: Request, res: Response) {
   const { currency, days } = req.query;
 
   const urlWithParams = `${url}daily/${currency}/${days}`;
@@ -31,7 +23,7 @@ async function latelyPrice(req: Request, res: Response) {
 
     return res.status(200).json({
       data,
-      message: getMessage("currency.lately.prices"),
+      message: getMessage("currency.latest.prices"),
       metadata: req.new_token,
     });
   } catch (err) {
@@ -106,4 +98,4 @@ async function getCurrency(req: Request, res: Response) {
   }
 }
 
-export default { getCurrency, currentPrice, latelyPrice };
+export default { getCurrency, currentPrice, latestPrice };

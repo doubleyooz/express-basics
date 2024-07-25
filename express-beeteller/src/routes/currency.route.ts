@@ -13,10 +13,10 @@ routes.get(
   CurrencyController.currentPrice
 );
 routes.get(
-  "/currencies/lately",
+  "/currencies/latest",
   auth(),
-  CurrencyMiddleware.latelyPrice,
-  CurrencyController.latelyPrice
+  CurrencyMiddleware.latestPrice,
+  CurrencyController.latestPrice
 );
 
 export default routes;

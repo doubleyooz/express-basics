@@ -12,6 +12,21 @@
     "test:e2e": "jest --watchAll --runInBand --detectOpenHandles test/specs/e2e/",
     "test:unit": "jest --watchAll --runInBand --detectOpenHandles test/specs/unit/"
   },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "setupFiles": [
+      "dotenv/config"
+    ],
+    "modulePathIgnorePatterns": [
+      "dist"
+    ],
+    "setupFilesAfterEnv": [
+      "./test/config/test.config.ts"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,8 +46,13 @@
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.0.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.3",
     "ts-node-dev": "^2.0.0",
     "tsc": "^2.0.4",
     "typescript": "^5.5.4"

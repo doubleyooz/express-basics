@@ -20,7 +20,7 @@
     "user.delete.fail": "The specified user could not be deleted",
     "user.delete.success": "The specified user was deleted",
 
-    "currency.lately.prices": "Prices from the period returned",
+    "currency.latest.prices": "Prices from the period returned",
     "currency.current.prices": "Current prices returned.",
     "currency.get.price": "Prices from the specified currency returned."
 }
