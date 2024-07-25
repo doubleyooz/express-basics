@@ -1,0 +1,3 @@
+interface UserListQuery {
+  skip?: number;
+}
