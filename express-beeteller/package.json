@@ -1,0 +1,35 @@
+{
+  "name": "express-beeteller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node-dev --respawn --transpile-only --exit-child --watch src src/index.ts",
+    "start:prod": "node build/src/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child --watch src src/index.ts",
+    "test": "jest --watch --runInBand",
+    "test:e2e": "jest --watchAll --runInBand --detectOpenHandles test/specs/e2e/",
+    "test:unit": "jest --watchAll --runInBand --detectOpenHandles test/specs/unit/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.5.4"
+  }
+}
