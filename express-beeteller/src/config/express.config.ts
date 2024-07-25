@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import swaggerUi from "swagger-ui-express";
 import corsOptions from "./cors.config";
+
+import * as swaggerDocument from "../config/swagger.json";
 
 import appRoute from "../routes/app.route";
 import authRoute from "../routes/auth.route";
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 //app.use(cors());
 app.use(cors(corsOptions));
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(appRoute);
 app.use(authRoute);
