@@ -31,7 +31,7 @@ async function findById(req: Request, res: Response, next: NextFunction) {
       .shape({
         _id: rules.mongoId.required(),
       })
-      .validate(req.query, { stripUnknown: true });
+      .validate(req.params, { stripUnknown: true });
     next();
   } catch (err: any) {
     return res.status(400).json({

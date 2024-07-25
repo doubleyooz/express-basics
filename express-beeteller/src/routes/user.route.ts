@@ -8,11 +8,16 @@ const routes = Router();
 routes.post("/users", UserMiddleware.store, UserController.store);
 routes.get("/users", auth(), UserMiddleware.list, UserController.list);
 routes.get(
-  "/users/findOne",
+  "/users/:_id",
   auth(),
   UserMiddleware.findById,
   UserController.findOne
 );
-routes.delete("/users", auth(), UserMiddleware.findById, UserController.remove);
+routes.delete(
+  "/users/:_id",
+  auth(),
+  UserMiddleware.findById,
+  UserController.remove
+);
 
 export default routes;

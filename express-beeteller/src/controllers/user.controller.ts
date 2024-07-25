@@ -3,6 +3,10 @@ import User, { IUser } from "../models/user.model";
 import { hashPassword } from "../utils/password.util";
 import { getMessage } from "../utils/message.util";
 
+interface UserListQuery {
+  skip?: number;
+}
+
 const store = async (req: Request, res: Response) => {
   const { email, password }: IUser = req.body;
 
@@ -53,7 +57,7 @@ const list = async (req: Request, res: Response) => {
 };
 
 const findOne = async (req: Request, res: Response) => {
-  const { _id } = req.query;
+  const { _id } = req.params;
 
   try {
     const user = await User.findById(_id);

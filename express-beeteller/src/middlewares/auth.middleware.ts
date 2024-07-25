@@ -43,7 +43,7 @@ export const auth = () => {
           { _id: payload._id, tokenVersion: payload.tokenVersion },
           1
         );
-        req.new_token = newToken;
+        req.new_token = newToken || undefined;
         console.log(`New Token: ${newToken}`);
       }
       console.log("shall pass");
