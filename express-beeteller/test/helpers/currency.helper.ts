@@ -3,7 +3,7 @@ import supertest from "supertest";
 import { app } from "../../src/config/express.config";
 import { getMessage } from "../../src/utils/message.util";
 import { USER } from "../mocks/user.mock";
-import { BRL, BTC, EUR, USD } from "../../src/utils/currencies.util";
+import { BRL, BTC, EUR, USD } from "../../src/utils/constant.util";
 
 const latestPrice = (currency: string, days: number, statusCode: number) => {
   it("GET /currencies/latest", async () => {

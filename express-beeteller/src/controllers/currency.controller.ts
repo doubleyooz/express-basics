@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import axios from "axios";
 import { getMessage } from "../utils/message.util";
-import { BRL, BTC, EUR, url, url2, url3, USD } from "../utils/currencies.util";
+import { BRL, BTC, EUR, url, url2, url3, USD } from "../utils/constant.util";
 
 // "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL";
 
