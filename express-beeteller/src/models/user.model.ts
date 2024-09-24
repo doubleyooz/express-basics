@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { USER } from "../utils/constant.util";
 
 export interface IUser extends Document {
   email: string;
@@ -15,4 +16,4 @@ const UserSchema: Schema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model<IUser>("User", UserSchema);
+export default mongoose.model<IUser>(USER, UserSchema);
