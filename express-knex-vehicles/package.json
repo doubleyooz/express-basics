@@ -1,0 +1,41 @@
+{
+  "name": "express-knex-vehicles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "seed:make": "knex --knexfile src/database/config/migration.config.ts seed:make -x ts",
+    "seed:run": "knex --knexfile src/database/config/migration.config.ts seed:run",
+    "migrate:make": "tsx ./node_modules/knex/bin/cli.js --knexfile src/database/config/migration.config.ts migrate:make -x ts",
+    "migrate:latest": "knex --knexfile src/database/config/migration.config.ts migrate:latest",
+    "migrate:latest:test": "knex --knexfile src/database/config/migration.config.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile src/database/config/migration.config.ts migrate:rollback",
+    "migrate:rollback:test": "knex --knexfile src/database/config/migration.config.ts migrate:rollback",
+    "dev": "tsx --watch src src/index.ts",
+    "test": "DOTENV_CONFIG_PATH=./.env.test jest --watch --runInBand",
+    "test:e2e": "DOTENV_CONFIG_PATH=./.env.test jest --runInBand test/e2e/tests",
+    "test:unit": "DOTENV_CONFIG_PATH=./.env.test jest --watch --runInBand test/unit/tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "knex": "^3.1.0",
+    "pg": "^8.13.3",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/yup": "^0.32.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}

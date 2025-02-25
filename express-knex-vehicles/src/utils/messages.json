@@ -1,0 +1,10 @@
+{
+    "default.return": "Hello World",
+    "default.badRequest": "You didn't give us what we want!",
+    "default.notfound" : "Not Found.",
+    "default.server.error": "It's not you, it's us. Server Error.",
+    "default.successfulRequest": "Successful request.",
+    "default.unauthorized": "Unauthorized.",
+    "default.unprocessibleEntity": "Please review the request data and try again.",
+    "default.unexpected": "An unexpected error occurred." 
+}
