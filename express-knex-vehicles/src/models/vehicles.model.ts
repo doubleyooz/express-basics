@@ -15,4 +15,6 @@ export type UpdateVehicleDto = Partial<Omit<IVehicle, 'plaque' | 'chassis' | 're
 
 export type FindVehicleDto = Partial<Omit<IVehicle, '_id' | 'chassis' | 'renavam'>>;
 
+export type FindByIdVehicleDto = { _id: string };
+
 export const VEHICLES = 'vehicles';

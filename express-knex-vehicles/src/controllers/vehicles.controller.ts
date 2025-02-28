@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import usersService from "../services/users.service";
+import vehicleService from "../services/vehicles.service";
 
 
 import { getMessage } from "../utils/message.util";
@@ -11,16 +11,16 @@ import {
     STATUS_CODE_UNPROCESSABLE_ENTITY,
     UnprocessableEntityException,
 } from "../utils/exception.util";
-import { CreateUserDto, FindByIdUserDto } from "../models/users.model";
+import { CreateVehicleDto, FindByIdVehicleDto, FindVehicleDto } from "../models/vehicles.model";
 
 const create = async (req: Request, res: Response): Promise<any> => {
-    const { email, password, name }: CreateUserDto = req.body;
+    const { brand, chassis, model, plaque, renavam, year }: CreateVehicleDto = req.body;
 
     try {
-        const user = await usersService.create({ email, password, name });
+        const vehicle = await vehicleService.create({ brand, chassis, model, plaque, renavam, year });
         return res.status(STATUS_CODE_OK).json({
-            message: getMessage("user.create.success"),
-            data: user,
+            message: getMessage("vehicle.create.success"),
+            data: vehicle,
         });
     } catch (err) {
 
@@ -31,14 +31,14 @@ const create = async (req: Request, res: Response): Promise<any> => {
     }
 };
 const findOne = async (req: Request, res: Response): Promise<any> => {
-    const { _id } = req.query as FindByIdUserDto;
+    const { _id } = req.query as FindByIdVehicleDto;
 
     try {
-        const user = await usersService.findById(_id);
+        const vehicle = await vehicleService.findById(_id);
 
         return res.json({
-            message: getMessage("user.findone.success"),
-            data: user,
+            message: getMessage("vehicle.findone.success"),
+            data: vehicle,
         });
     } catch (err) {
         if (err instanceof CustomException)
@@ -49,18 +49,27 @@ const findOne = async (req: Request, res: Response): Promise<any> => {
 };
 
 const find = async (req: Request, res: Response): Promise<any> => {
-    const { name } = req.query;
+    const { brand, model, plaque, year } = req.query as FindVehicleDto;
 
 
-    let search =
-        name
-            ? { name: { $regex: "^" + name, $options: "i" } }
-            : undefined
+    let search: FindVehicleDto = {}
+
+    if (brand)
+        search.brand = brand;
+
+    if (model)
+        search.model = model;
+
+    if (plaque)
+        search.plaque = plaque;
+
+    if (year)
+        search.year = year;
 
     try {
-        const result = await usersService.findAll(search);
+        const result = await vehicleService.findAll(search);
         return res.json({
-            message: getMessage("user.list.success"),
+            message: getMessage("vehicle.list.success"),
             data: result,
         });
     } catch (err) {
@@ -72,13 +81,15 @@ const find = async (req: Request, res: Response): Promise<any> => {
 };
 
 const update = async (req: Request, res: Response): Promise<any> => {
+    const { _id } = req.query as FindByIdVehicleDto;
+
     try {
-        const result = await usersService.update(
-            { _id: req.auth },
+        const result = await vehicleService.update(
+            _id,
             req.body
         );
         return res.json({
-            message: getMessage("user.update.success"),
+            message: getMessage("vehicle.update.success"),
             data: result,
         });
     } catch (err) {
@@ -90,10 +101,12 @@ const update = async (req: Request, res: Response): Promise<any> => {
 };
 
 const remove = async (req: Request, res: Response): Promise<any> => {
+    const { _id } = req.query as FindByIdVehicleDto;
+
     try {
-        const result = await usersService.deleteById(req.auth);
+        const result = await vehicleService.deleteById(_id);
         return res.json({
-            message: getMessage("user.delete.success"),
+            message: getMessage("vehicle.delete.success"),
             data: result,
         });
     } catch (err) {

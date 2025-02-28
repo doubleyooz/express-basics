@@ -6,5 +6,33 @@
     "default.successfulRequest": "Successful request.",
     "default.unauthorized": "Unauthorized.",
     "default.unprocessibleEntity": "Please review the request data and try again.",
-    "default.unexpected": "An unexpected error occurred." 
+    "default.unexpected": "An unexpected error occurred.",
+
+    
+    "unauthorized.refresh.token.missing": "Lack credentials.",    
+    "user.invalid.password": "Invalid Password.",
+    "user.invalid.password.short": "Password is too short -it must be at least 8 characters long.",
+    "user.invalid.password.weak": "the password must contain at least 1 number, at least 1 lower case letter, at least 1 upper case and at least 1 special character.",
+    "user.valid.sign_in.success": "Successful login.",
+    "user.valid.sign_up.success": "Successful registration. Please log in to your account to proceed.",
+    "user.sign_up.google.password.required": "Set a password",
+    "user.error.sign_up.twinned": "There was a duplicate key error.",
+    "user.error.notfound": "The specified user could not be found.",
+    "user.delete.fail": "The specified user could not be deleted",
+    "user.delete.success": "The specified user was deleted",
+    "user.findone.success": "User retrieved successfully!",
+    "user.list.success": "User list retrieved successfully!",
+    "user.list.notfound": "No matching users found",
+    "user.update.success": "User updated",
+    "user.notfound": "User not found",    
+ 
+    "vehicle.error.notfound": "The specified vehicle could not be found.",
+    "vehicle.delete.fail": "The specified vehicle could not be deleted",
+    "vehicle.delete.success": "The specified vehicle was deleted",
+    "vehicle.findone.success": "Vehicle retrieved successfully!",
+    "vehicle.list.success": "Vehicle list retrieved successfully!",
+    "vehicle.list.notfound": "No matching vehicles found",
+    "vehicle.update.success": "Vehicle updated",
+    "vehicle.notfound": "Vehicle not found"
+
 }

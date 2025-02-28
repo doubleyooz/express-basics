@@ -22,5 +22,37 @@ const password = yup
     )
     .required();
 
+const plaque = yup
+    .string()
+    .matches(/^[A-Z]{3}-[0-9]{4}$/, getMessage("vehicle.invalid.plaque"))
 
-export { name, email, _id, password }
+const renavam = yup
+    .string()
+    .matches(/^[0-9]{11}$/, getMessage("vehicle.invalid.renavam"))
+
+const chassis = yup
+    .string()
+    .matches(/^[A-Z]{3}-[0-9]{4}$/, getMessage("vehicle.invalid.chassis"))
+
+const model = yup
+    .string()
+    .min(3)
+    .max(20)
+    .trim()
+    .matches(/^([^0-9]*)$/, "no numbers allowed");
+
+const brand = yup
+    .string()
+    .min(3)
+    .max(20)
+    .trim()
+    .matches(/^([^0-9]*)$/, "no numbers allowed");
+
+const year = yup
+    .string()
+    .min(4)
+    .max(4)
+    .matches(/^[0-9]{4}$/, getMessage("vehicle.invalid.year"));
+
+
+export { name, email, _id, password, plaque, renavam, chassis, model, brand, year };

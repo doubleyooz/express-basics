@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import yup from "yup";
 
-import { email, name, password, _id } from "../utils/yup.util";
+import { _id, brand, chassis, model, plaque, renavam, year } from "../utils/yup.util";
 import { STATUS_CODE_BAD_REQUEST } from "../utils/exception.util";
 import { getMessage } from "../utils/message.util";
 
@@ -9,9 +9,12 @@ async function create(req: Request, res: Response, next: NextFunction): Promise<
     try {
         const result = await yup
             .object({
-                email: email.required(),
-                password, // it's a required field already
-                name: name.required(),
+                brand: brand.required(),
+                chassis: chassis.required(),
+                model: model.required(),
+                plaque: plaque.required(),
+                renavam: renavam.required(),
+                year: year.required(),
             })
             .validate(req.body, { abortEarly: false, stripUnknown: true });
 
@@ -57,7 +60,10 @@ async function find(req: Request, res: Response, next: NextFunction): Promise<an
     try {
         const result = await yup
             .object({
-                name: name,
+                model,
+                plaque,
+                brand,
+                year,
             })
             .validate(req.query, { abortEarly: true, stripUnknown: true });
 
@@ -80,11 +86,25 @@ async function update(req: Request, res: Response, next: NextFunction): Promise<
     try {
         const result = await yup
             .object({
-                name: name,
+                model,
+                plaque,
+                brand,
+                year,
+                chassis,
+                renavam,
+
             })
             .validate(req.body, { abortEarly: false, stripUnknown: true });
 
         req.body = result;
+
+        const result2 = await yup
+            .object({
+                _id: _id.required(),
+            })
+            .validate(req.query, { stripUnknown: true });
+
+        req.query = result;
         next();
     } catch (err: unknown) {
         if (err instanceof yup.ValidationError) {
