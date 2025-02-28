@@ -47,7 +47,7 @@ async function findById(user_id: string) {
     return user[0];
 }
 
-async function findAll(filters?: { name?: string; email?: string }) {
+async function findAll(filters?: { name?: string | { $regex: string; $options: string; }; email?: string }) {
     try {
         // Start building the query
         let query = knex(USERS).select(selection);

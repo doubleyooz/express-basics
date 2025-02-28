@@ -7,6 +7,8 @@ export interface IUser {
 
 export type CreateUserDto = Omit<IUser, '_id'>;
 
+export type FindByIdUserDto = Omit<IUser, 'password' | 'name' | 'email'>;
+
 export type UpdateUserDto = Partial<Omit<IUser, '_id' | 'email'>>;
 
 export const USERS = 'users'
