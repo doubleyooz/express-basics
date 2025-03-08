@@ -4,7 +4,7 @@ import { getMessage } from "../utils/message.util";
 import { InternalServerErrorException, NotFoundException } from "../utils/exception.util";
 
 
-const store = async (data: CreateUserDto) => {
+const create = async (data: CreateUserDto) => {
     const { email, name, password } = data;
 
     try {
@@ -88,4 +88,4 @@ async function deleteById(_id: string) {
 }
 
 
-export default { store, findById, findAll, update, deleteById };
+export default { create, findById, findAll, update, deleteById };

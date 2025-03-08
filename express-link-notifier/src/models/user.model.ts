@@ -1,15 +1,16 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser {
+    _id: string;
     email: string;
     password: string;
     name: string;
     tokenVersion: number;
 }
 
-export interface IUserDocument extends IUser, Document { }
+export interface IUserDocument extends Document<IUser> { }
 
-export type CreateUserDto = Omit<IUser, 'tokenVersion'>;
+export type CreateUserDto = Omit<IUser, 'tokenVersion' | '_id'>;
 
 export type FindByIdUserDto = Omit<IUser, 'password' | 'name' | 'email' | 'tokenVersion'>;
 
@@ -29,4 +30,4 @@ const UserSchema: Schema = new Schema(
     { timestamps: true }
 );
 
-export default mongoose.model<IUserDocument>(USER, UserSchema);
+export default mongoose.model<IUser>(USER, UserSchema);
