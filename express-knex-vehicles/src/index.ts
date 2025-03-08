@@ -3,7 +3,7 @@ import http from "http";
 
 import { app } from './config/express.config';
 
-const server = http.Server(app);
+const server = new http.Server(app);
 
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
 server.listen(PORT, () => {
